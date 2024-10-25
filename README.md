@@ -16,9 +16,9 @@ Shell history is nice, but not all commands are run directly through the shell -
 
 This also provides me with context; like what directory was this command run in?
 
-When I started using [`z`](https://github.com/rupa/z), also made it incredibly easy to [create an initial database with years of history](https://github.com/seanbreckenridge/HPI-personal/blob/master/scripts/z-init-database)
+When I started using [`z`](https://github.com/rupa/z), also made it incredibly easy to [create an initial database with years of history](https://github.com/purarue/HPI-personal/blob/master/scripts/z-init-database)
 
-This gives me finer control on what gets logged, so I can do analysis on it later from [`HPI`](https://github.com/seanbreckenridge/HPI#readme).
+This gives me finer control on what gets logged, so I can do analysis on it later from [`HPI`](https://github.com/purarue/HPI#readme).
 
 ## How?
 
@@ -57,9 +57,9 @@ I recommend you symlink `#!/bin/sh` to something faster than `bash`, like `dash`
 An example of what this logs to the CSV file:
 
 ```csv
-1599523021,/home/sean/Repos/ttt,nvim ./tttlog.go
-1599523446,/home/sean,alacritty
-1599523626,/home/sean,keepassxc
+1599523021,/home/username/Repos/ttt,nvim ./tttlog.go
+1599523446,/home/username,alacritty
+1599523626,/home/username,keepassxc
 ```
 
 One could also just use this to log generic events. `tttlog` just saves whatever arguments you pass it with some metadata about where/when, so could be used to track habits/my behaviour like:
@@ -68,7 +68,7 @@ One could also just use this to log generic events. `tttlog` just saves whatever
 #!/bin/sh
 
 # every minute, if I'm watching something, save what movie/music I'm listening to
-# using my https://github.com/seanbreckenridge/mpv-sockets script
+# using my https://github.com/purarue/mpv-sockets script
 
 while true; do
   if MEDIA_PATH="$(mpv-currently-playing)"; do
@@ -78,18 +78,18 @@ while true; do
 done
 ```
 
-For examples of where this is used in my [dotfiles](https://github.com/seanbreckenridge/dotfiles/), see [here](https://gist.github.com/seanbreckenridge/996126c45a4b3ed10941c7f190ac0605).
+For examples of where this is used in my [dotfiles](https://github.com/purarue/dotfiles/), see [here](https://gist.github.com/purarue/996126c45a4b3ed10941c7f190ac0605).
 
 ## Install
 
 Requires `go`
 
 ```bash
-git clone "https://github.com/seanbreckenridge/ttt" && cd ./ttt
+git clone "https://github.com/purarue/ttt" && cd ./ttt
 make
 ```
 
-or with [`bpkg`](https://github.com/bpkg/bpkg): `bpkg install -g seanbreckenridge/ttt`
+or with [`bpkg`](https://github.com/bpkg/bpkg): `bpkg install -g purarue/ttt`
 
 You can change which file `tttlog` writes to by setting the `TTT_HISTFILE` environment variable. The default location is `${XDG_DATA_HOME:-$HOME/.local/share}/ttt_history.csv`
 
@@ -113,7 +113,7 @@ Benchmark #2: printf hi >/dev/null
   Time (mean ± σ):       0.1 ms ±   0.1 ms    [User: 0.2 ms, System: 0.2 ms]
   Range (min … max):     0.0 ms …   1.3 ms    1935 runs
 
-Benchmark #3: /home/sean/Repos/ttt/test/../ttt printf hi >/dev/null
+Benchmark #3: /home/username/Repos/ttt/test/../ttt printf hi >/dev/null
   Time (mean ± σ):       3.8 ms ±   0.7 ms    [User: 2.3 ms, System: 2.3 ms]
   Range (min … max):     2.3 ms …   5.8 ms    522 runs
 ```
